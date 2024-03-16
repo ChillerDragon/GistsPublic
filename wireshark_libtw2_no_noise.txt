@@ -1,0 +1,10 @@
+# wireshark filter for the libtw2 teeworlds 0.7 dissector
+# see libtw2 on how to install the dissector https://github.com/heinrich5991/libtw2
+# this filter gets rid of all the frequently sent packets that only contain snap and input
+# so you can focus on the more interesting data
+#
+# 1096 frames compress down to this
+# https://private-user-images.githubusercontent.com/20344300/298385531-e5e67e4d-56f1-4f77-ac02-100517b5683e.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTA1Nzg4MzQsIm5iZiI6MTcxMDU3ODUzNCwicGF0aCI6Ii8yMDM0NDMwMC8yOTgzODU1MzEtZTVlNjdlNGQtNTZmMS00Zjc3LWFjMDItMTAwNTE3YjU2ODNlLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDAzMTYlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwMzE2VDA4NDIxNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTM1NGNkZTliOWIxNWYyMjliM2YwMjE2ZDIxNTVlYmZiNzUyMTU3ZTIyMzMyZmQ5OWE4Nzg0OTI1OGIyZTA2NGYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.FQ2uwNY6bxlKVNA0XXHAm-YP-EF9Fx6VimJMOUoQuzo
+
+!(((tw7.packet.num_chunks == 2) && (tw7.msg == "sys.input_timing") && (tw7.msg == "sys.snap_empty")) || ((tw7.packet.num_chunks == 2) && (tw7.msg == "sys.input_timing") && (tw7.msg == "sys.snap_single")) || ((tw7.packet.num_chunks == 1) && (tw7.msg == "sys.input")) || ((tw7.packet.num_chunks == 1) && (tw7.msg == "sys.snap_empty")) || ((tw7.packet.num_chunks == 1) && (tw7.msg == "sys.snap_single")))
+
