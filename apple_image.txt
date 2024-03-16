@@ -1,0 +1,5 @@
+# notes on downloading a macOS image the official way
+https://support.apple.com/de-de/HT201372
+https://support.apple.com/de-de/HT201260
+https://support.apple.com/de-de/HT206886
+https://www.howtogeek.com/289594/how-to-install-macos-sierra-in-virtualbox-on-windows-10/
